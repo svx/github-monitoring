@@ -51,6 +51,6 @@ services:
     image: infinityworks/github-exporter:latest
     environment:
       - REPOS=freeCodeCamp/freeCodeCamp, plone/documentation, plone/docs-guide
-      - GITHUB_TOKEN=e80878a07ddd425640325fad3ae225c3fc5bd619
+      - GITHUB_TOKEN=""
     networks:
       - back-tier
