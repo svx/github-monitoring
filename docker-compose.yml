@@ -10,7 +10,7 @@ networks:
 
 services:
   prometheus:
-    image: prom/prometheus:v2.0.0
+    image: prom/prometheus:v2.13.1
     volumes:
       - ./prometheus/:/etc/prometheus/
       - prometheus_data:/prometheus
@@ -27,7 +27,7 @@ services:
       - back-tier
 
   grafana:
-    image: grafana/grafana
+    image: grafana/grafana:6.4.3
     depends_on:
       - prometheus
     ports:
@@ -40,7 +40,7 @@ services:
     networks:
       - back-tier
       - front-tier
- 
+
   metrics:
     tty: true
     stdin_open: true
@@ -48,9 +48,9 @@ services:
       - 9171
     ports:
       - 9171:9171
-    image: infinityworks/github-exporter:latest 
+    image: infinityworks/github-exporter:latest
     environment:
-      - REPOS=freeCodeCamp/freeCodeCamp, docker/docker
-      - GITHUB_TOKEN=<GitHub API Token see README>
+      - REPOS=freeCodeCamp/freeCodeCamp, plone/documentation, plone/docs-guide
+      - GITHUB_TOKEN=e80878a07ddd425640325fad3ae225c3fc5bd619
     networks:
       - back-tier
